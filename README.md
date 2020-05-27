@@ -1,4 +1,4 @@
-# GameOfLife
+# Conway's Game Of Life
 
 ## For this project, I will be creating Conway's Game of Life using Javascript & React.
 
