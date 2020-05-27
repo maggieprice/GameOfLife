@@ -1,17 +1,30 @@
 .Board {
+  border: solid #53d8fb 15px;
   position: relative;
   margin: 0 auto;
-  background-color: #000;
-  background-image: linear-gradient(#333 1px, transparent 1px),
-    linear-gradient(90deg, #333 1px, transparent 1px);
+  background-color: #363732;
+  background-image: linear-gradient(#dce1e9 1px, transparent 1px),
+    linear-gradient(90deg, #dce1e9 1px, transparent 1px);
 }
 
 .Cell {
-  background: #ccc;
+  background: #66c3ff;
   position: absolute;
 }
 
 .rules-descriptor {
   width: 60%;
   margin: auto;
+}
+
+.button,
+.controls {
+  font-size: 2rem;
+  margin: 1%;
+}
+
+.rules-div {
+  width: 80%;
+  border: solid #53d8fb 15px;
+  margin: 1% auto;
 }

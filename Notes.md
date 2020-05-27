@@ -63,3 +63,8 @@
 ## Rework Process
 
 1. Evaluated how to get rid of extra rule.
+2. Changed sizing and colors.
+3. Realized this threw off the onclick.
+4. Added more CSS.
+5. Added button for clearing grid. Needs functionality.
+6. Added text for display of selected cells. Needs functionality.

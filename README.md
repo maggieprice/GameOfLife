@@ -16,11 +16,13 @@
 
 1. None of my scripts will run.
 2. Cells did not click after getting to that part of tutorial.
+3. The resize threw off the onlclick.
 
 #### Solutions
 
 1. Deleted yarn.lock
 2. Changed my renamed things back. Concluded they must be resereved keywords and therefore necessesary.
+3.
 
 ### Todo/Wish List:
 

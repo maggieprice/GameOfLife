@@ -2,7 +2,7 @@ import React from "react";
 
 function Rules() {
   return (
-    <div>
+    <div className="rules-div">
       <h1>Rules of Conway's Game of Life</h1>
       <h2 className="rules-descriptor">
         In the Game of Life, these rules examine each cell of the grid. For each

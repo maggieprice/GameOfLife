@@ -168,9 +168,13 @@ class Game extends React.Component {
             <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
           ))}
         </div>
+        <div className="selected-cells-display">
+          <h3> The selected cells are: {}</h3>
+        </div>
         <div className="controls">
           Update every
           <input
+            className="controls"
             value={this.state.interval}
             onChange={this.handleIntervalChange}
           />
@@ -184,6 +188,7 @@ class Game extends React.Component {
               Run
             </button>
           )}
+          <button className="button"> Clear Board</button>
         </div>
       </div>
     );
