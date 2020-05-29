@@ -31,8 +31,8 @@ class Game extends React.Component {
   }
   state = {
     cells: [],
-    interval: 100,
     isRunning: false,
+    interval: 100,
   };
   makeEmptyBoard() {
     let board = [];
@@ -44,6 +44,16 @@ class Game extends React.Component {
     }
     return board;
   }
+
+  getElementOffset() {
+    const rect = this.boardRef.getBoundingClientRect();
+    const doc = document.documentElement;
+    return {
+      x: rect.left + window.pageXOffset - doc.clientLeft,
+      y: rect.top + window.pageYOffset - doc.clientTop,
+    };
+  }
+
   makeCells() {
     let cells = [];
     for (let y = 0; y < this.rows; y++) {
@@ -54,15 +64,6 @@ class Game extends React.Component {
       }
     }
     return cells;
-  }
-
-  getElementOffset() {
-    const rect = this.boardRef.getBoundingClientRect();
-    const doc = document.documentElement;
-    return {
-      x: rect.left + window.pageXOffset - doc.clientLeft,
-      y: rect.top + window.pageYOffset - doc.clientTop,
-    };
   }
 
   handleClick = (event) => {
@@ -88,7 +89,6 @@ class Game extends React.Component {
     }
   };
   runIteration() {
-    console.log("running iteration");
     let newBoard = this.makeEmptyBoard();
     for (let y = 0; y < this.rows; y++) {
       for (let x = 0; x < this.cols; x++) {
@@ -112,10 +112,6 @@ class Game extends React.Component {
       this.runIteration();
     }, this.state.interval);
   }
-
-  handleIntervalChange = (event) => {
-    this.setState({ interval: event.target.value });
-  };
 
   calculateNeighbors(board, x, y) {
     let neighbors = 0;
@@ -147,6 +143,24 @@ class Game extends React.Component {
 
     return neighbors;
   }
+
+  handleIntervalChange = (event) => {
+    this.setState({ interval: event.target.value });
+  };
+
+  handleClear = () => {
+    this.board = this.makeEmptyBoard();
+    this.setState({ cells: this.makeCells() });
+  };
+
+  handleSeed = () => {
+    for (let y = 0; y < this.rows; y++) {
+      for (let x = 0; x < this.cols; x++) {
+        this.board[y][x] = Math.random() >= 0.5;
+      }
+    }
+    this.setState({ cells: this.makeCells() });
+  };
 
   render() {
     const { cells, interval, isRunning } = this.state;
@@ -188,7 +202,13 @@ class Game extends React.Component {
               Run
             </button>
           )}
-          <button className="button"> Clear Board</button>
+          <button className="button" onClick={this.handleSeed}>
+            Seed
+          </button>
+          <button className="button" onClick={this.handleClear}>
+            {" "}
+            Clear Board
+          </button>
         </div>
       </div>
     );
