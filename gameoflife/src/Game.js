@@ -33,6 +33,7 @@ class Game extends React.Component {
     cells: [],
     isRunning: false,
     interval: 100,
+    generation: 0,
   };
   makeEmptyBoard() {
     let board = [];
@@ -107,7 +108,10 @@ class Game extends React.Component {
       }
     }
     this.board = newBoard;
-    this.setState({ cells: this.makeCells() });
+    this.setState({
+      cells: this.makeCells(),
+      generation: this.state.generation + 1,
+    });
     this.timeoutHandler = window.setTimeout(() => {
       this.runIteration();
     }, this.state.interval);
@@ -150,7 +154,7 @@ class Game extends React.Component {
 
   handleClear = () => {
     this.board = this.makeEmptyBoard();
-    this.setState({ cells: this.makeCells() });
+    this.setState({ cells: this.makeCells(), generation: 0 });
   };
 
   handleSeed = () => {
@@ -183,7 +187,7 @@ class Game extends React.Component {
           ))}
         </div>
         <div className="selected-cells-display">
-          <h3> The selected cells are: {}</h3>
+          <h3> Generation: {this.state.generation}</h3>
         </div>
         <div className="controls">
           Update every
